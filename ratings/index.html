@@ -1,0 +1,98 @@
+<html>
+<head>
+<style type="text/css">
+.rating {
+	list-style-type: none;
+	cursor: pointer;
+}
+.rating li {
+	display: inline-block;
+	width: 100px;
+	height: 102px;
+	-webkit-transition: color 1s; /* Safari */
+    transition: color 1s;
+}	
+.rating.vertical li {
+	display: block;
+}
+.rating .st1 {
+	background-size: 100px 102px;
+	background-image: url("ratingstar1.png");
+    background-repeat: no-repeat;
+    background-position: 0px center;
+}
+.rating .st2 {
+	background-image: url("ratingstar2.png");
+    background-repeat: no-repeat;
+    background-position: 0px center
+}
+.rating .st3 {
+	background-image: url("ratingstar3.png");
+    background-repeat: no-repeat;
+    background-position: 0px center;
+}
+.rating .st4 {
+	background-image: url("ratingstar4.png");
+    background-repeat: no-repeat;
+    background-position: 0px center;
+}
+.rating .st5 {
+	background-image: url("ratingstar5.png");
+    background-repeat: no-repeat;
+    background-position: 0px center;
+}
+.rating:not(.disabled) .st1:hover {
+	box-shadow: 0px 0px 5px 5px #c82;
+}
+.rating:not(.disabled) .st2:hover {
+	box-shadow: 0px 0px 5px 5px #c92;
+}
+.rating:not(.disabled) .st3:hover {
+	box-shadow: 0px 0px 5px 5px #ca2;
+}
+.rating:not(.disabled) .st4:hover {
+	box-shadow: 0px 0px 5px 5px #db3;
+}
+.rating:not(.disabled) .st5:hover {
+	box-shadow: 0px 0px 5px 5px #dd4;
+}
+.noshow {
+	visibility: hidden;
+}
+.inline {
+	display: inline;
+}
+.ratingresult {
+	padding: 20px;
+	font-size: 2em;
+	background: #000;
+	color: #fff;
+	display: none;
+}
+</style>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function() {
+	$(".rating li").click(function() {
+		if (!$(".rating").hasClass("disabled")) {
+			$(".ratingresult").fadeIn("slow");
+			$(".rating").fadeTo('400', 0.3);
+			$(".rating").addClass("disabled");
+			$(".ratingresult").html("You voted " + $(this).text() + "!");
+		}
+	});
+});
+</script>
+</head>
+<body>
+<ul class="rating">
+<li class="st1"><span class="noshow inline">1</span></li>
+<li class="st2"><span class="noshow inline">2</span></li>
+<li class="st3"><span class="noshow inline">3</span></li>
+<li class="st4"><span class="noshow inline">4</span></li>
+<li class="st5"><span class="noshow inline">5</span></li>
+</ul>
+<div class="ratingresult">
+</div>
+</body>
+</html>
